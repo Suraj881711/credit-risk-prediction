@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Credit Approval Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #69b8d2;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background: #c34040;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Credit Approval Prediction</h2>
+        <form action="/predict" method="post">
+            {% if error %}
+            <p style="background:#fff3cd; color:#664d03; padding:10px; border-radius:6px;">{{ error }}</p>
+            {% endif %}
+
+            <label>Job (category code from dataset, 0–12):</label>
+            <input type="number" name="job" min="0" max="12" required>
+
+            <label>Marital Status (code, 0–3):</label>
+            <input type="number" name="marital" min="0" max="3" required>
+
+            <label>Education Level (code, 0–4):</label>
+            <input type="number" name="education" min="0" max="4" required>
+
+            <label>Housing Loan (code, 0–2):</label>
+            <input type="number" name="housing" min="0" max="2" required>
+
+            <label>Age:</label>
+            <input type="number" name="age" min="18" max="100" required>
+
+            <label>Account Balance:</label>
+            <input type="number" name="balance" step="0.01" min="-10000" max="200000" required>
+
+            <label>Last Contact Duration (seconds):</label>
+            <input type="number" name="duration" min="0" max="10000" required>
+
+            <label>Number of Contacts in Campaign:</label>
+            <input type="number" name="campaign" min="1" max="60" required>
+
+            <input type="submit" value="Check Approval">
+            <p style="font-size:13px;">💡 Sample values from the dataset: job 2, marital 1, education 2, housing 1, age 38, balance 170, duration 442, campaign 1</p>
+        </form>
+    </div>
+</body>
+</html>

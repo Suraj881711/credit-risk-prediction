@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result — Credit Approval Prediction</title>
+</head>
+<body>
+    <h2>Prediction Result</h2>
+    <p style="font-size:20px;"><b>{{ prediction }}</b></p>
+
+    {% if confidence is not none %}
+    <p>🤖 Model confidence: <b>{{ confidence }}%</b>
+       (share of nearest neighbours with this outcome)</p>
+    {% endif %}
+
+    <h3>📋 Your inputs</h3>
+    <p>
+        Job code: {{ inputs.job }} | Marital code: {{ inputs.marital }} |
+        Education code: {{ inputs.education }} | Housing code: {{ inputs.housing }}<br>
+        Age: {{ inputs.age }} | Balance: {{ inputs.balance }} |
+        Duration: {{ inputs.duration }}s | Campaign contacts: {{ inputs.campaign }}
+    </p>
+
+    <a href="/">Try Again</a>
+</body>
+</html>
